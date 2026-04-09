@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="Capture Image"
+        android:backgroundTint="#4xAF50"
         app:layout_constraintEnd_toStartOf="@+id/btn_record_video"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="Record Video"
+        android:backgroundTint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_capture_image"
         app:layout_constraintTop_toTopOf="parent" />
