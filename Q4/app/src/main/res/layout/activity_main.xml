@@ -1,39 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:background="@color/surface"
+    android:padding="24dp"
+    tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send SMS Demo"
-        android:textSize="24sp"
+        android:layout_marginTop="32dp"
+        android:text="@string/send_sms_title"
+        android:textColor="@color/primary"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etPhone"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPhone"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Phone Number"
-        android:inputType="phone" />
+        android:layout_marginTop="48dp"
+        android:hint="@string/phone_hint"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:startIconDrawable="@android:drawable/ic_menu_call"
+        app:startIconTint="@color/primary">
 
-    <EditText
-        android:id="@+id/etMessage"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilMessage"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type your message here..."
-        android:inputType="textMultiLine"
-        android:lines="3"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="16dp"
+        android:hint="@string/message_hint"
+        app:layout_constraintTop_toBottomOf="@id/tilPhone"
+        app:startIconDrawable="@android:drawable/ic_menu_send"
+        app:startIconTint="@color/primary">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSend"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send SMS"
-        android:layout_marginTop="20dp" />
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/primary"
+        android:text="@string/send_button_text"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="16dp"
+        app:icon="@android:drawable/ic_menu_send"
+        app:iconGravity="textStart"
+        app:layout_constraintTop_toBottomOf="@id/tilMessage" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
