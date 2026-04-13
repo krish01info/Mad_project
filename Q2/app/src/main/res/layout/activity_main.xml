@@ -11,9 +11,9 @@
         android:id="@+id/btn_capture_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="552dp"
+        android:backgroundTint="#c91e1e"
         android:text="Capture Image"
-        android:backgroundTint="#4xAF50"
         app:layout_constraintEnd_toStartOf="@+id/btn_record_video"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,9 +22,9 @@
         android:id="@+id/btn_record_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Record Video"
+        android:layout_marginTop="552dp"
         android:backgroundTint="#2196F3"
+        android:text="Record Video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_capture_image"
         app:layout_constraintTop_toTopOf="parent" />
