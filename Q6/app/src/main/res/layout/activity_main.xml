@@ -5,27 +5,76 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/phoneNumberEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:hint="Enter Phone Number"
         android:inputType="phone"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:background="@android:color/transparent"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/callButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <GridLayout
+        android:id="@+id/dialPad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:columnCount="3"
+        android:rowCount="4"
         android:layout_marginTop="16dp"
-        android:text="Make Call"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/callButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phoneNumberEditText" />
+        app:layout_constraintTop_toBottomOf="@id/phoneNumberEditText">
+
+        <Button style="@style/DialButton" android:text="1" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="2" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="3" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="4" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="5" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="6" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="7" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="8" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="9" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="*" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="0" android:onClick="onDialClick" />
+        <Button style="@style/DialButton" android:text="#" android:onClick="onDialClick" />
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/callButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="32dp"
+        android:text="📞"
+        android:textSize="24sp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:textColor="@android:color/white"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:cornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/clearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_input_delete"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintBottom_toBottomOf="@id/callButton"
+        app:layout_constraintStart_toEndOf="@id/callButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/callButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

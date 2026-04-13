@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
         Button callButton = findViewById(R.id.callButton);
+        Button clearButton = findViewById(R.id.clearButton);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -43,14 +44,44 @@ public class MainActivity extends AppCompatActivity {
                 checkPermissionsAndMakeCall();
             }
         });
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = phoneNumberEditText.getText().toString();
+                if (text.length() > 0) {
+                    phoneNumberEditText.setText(text.substring(0, text.length() - 1));
+                    phoneNumberEditText.setSelection(phoneNumberEditText.getText().length());
+                }
+            }
+        });
+
+        clearButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                phoneNumberEditText.setText("");
+                return true;
+            }
+        });
+    }
+
+    public void onDialClick(View view) {
+        Button button = (Button) view;
+        String digit = button.getText().toString();
+        phoneNumberEditText.append(digit);
     }
 
     private void checkPermissionsAndMakeCall() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
             
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.READ_PHONE_STATE},
+                    new String[]{
+                            Manifest.permission.CALL_PHONE,
+                            Manifest.permission.READ_PHONE_STATE,
+                            Manifest.permission.READ_CALL_LOG
+                    },
                     PERMISSION_REQUEST_CODE);
         } else {
             makePhoneCall();
@@ -72,10 +103,17 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            boolean allGranted = true;
+            for (int result : grantResults) {
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    allGranted = false;
+                    break;
+                }
+            }
+            if (allGranted) {
                 makePhoneCall();
             } else {
-                Toast.makeText(this, "Permission denied to make calls", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permissions denied", Toast.LENGTH_SHORT).show();
             }
         }
     }
