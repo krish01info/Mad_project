@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Q5</string>
+    <string name="app_name">Advanced Email Demo</string>
+    <string name="hint_to">To (e.g., example@mail.com)</string>
+    <string name="hint_cc">Cc</string>
+    <string name="hint_bcc">Bcc</string>
+    <string name="hint_subject">Subject</string>
+    <string name="hint_message">Compose your message…</string>
+    <string name="action_send">Send Email</string>
+    <string name="error_empty_recipient">Recipient is required</string>
+    <string name="error_no_email_client">No email client found</string>
+    <string name="toast_received">Received email for: %s</string>
 </resources>
