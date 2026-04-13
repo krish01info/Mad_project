@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Advanced Email Demo</string>
+    <string name="app_name">Email Demo</string>
     <string name="hint_to">To (e.g., example@mail.com)</string>
     <string name="hint_cc">Cc</string>
     <string name="hint_bcc">Bcc</string>
