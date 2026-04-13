@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/background_light"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_500"
+            android:background="@color/email_primary"
             app:title="@string/app_name"
             app:titleTextColor="@android:color/white" />
 
@@ -30,13 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="12dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
@@ -45,91 +46,106 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
+                    <!-- To -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layout_to"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_to"
                         app:startIconDrawable="@android:drawable/ic_dialog_email"
-                        app:startIconTint="@color/purple_500">
+                        app:startIconTint="@color/email_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_text_to"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_to"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Cc -->
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_cc"
+                        app:startIconDrawable="@android:drawable/ic_menu_myplaces"
+                        app:startIconTint="@color/email_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_text_cc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_cc"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Bcc -->
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_bcc"
+                        app:startIconDrawable="@android:drawable/ic_menu_view"
+                        app:startIconTint="@color/email_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_text_bcc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_bcc"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Subject -->
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_subject">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_text_subject"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_subject"
                             android:inputType="text" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Message Body -->
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="20dp"
+                        android:hint="@string/hint_message">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_text_message"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="top"
-                            android:hint="@string/hint_message"
-                            android:minLines="5"
+                            android:minLines="6"
                             android:inputType="textMultiLine" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Send Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_send"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_500"
-                        android:padding="12dp"
+                        android:backgroundTint="@color/email_primary"
+                        android:padding="14dp"
                         android:text="@string/action_send"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
                         android:textColor="@android:color/white"
-                        app:cornerRadius="8dp"
+                        app:cornerRadius="24dp"
+                        app:elevation="4dp"
                         app:icon="@android:drawable/ic_menu_send"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp"
                         app:iconTint="@android:color/white" />
 
                 </LinearLayout>
